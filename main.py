@@ -6,6 +6,7 @@ def fib_recursive(n, counts):
     """    
     # initializes counts list
     counts[n] += 1
+    
     ###TODO
     # base case: checks if the term number is 0 or 1 (their corresponding fibonacci terms match the term number)
     if n == 0 or n == 1:
@@ -27,7 +28,7 @@ def fib_top_down(n, fibs):
             return fibs[n]
         # recursive case: similar to original recursive implementation, except stores it in list of computed values
         else:
-            fibs[n] = fib_top_down(n - 1, fibs) + fib_top_down(n - 2, fibs)
+            return fib_top_down(n - 1, fibs) + fib_top_down(n - 2, fibs)
     # if value has already been computed, simply return value in given list index
     else:
         return fibs[n]
@@ -35,4 +36,12 @@ def fib_top_down(n, fibs):
 
 def fib_bottom_up(n):
     ###TODO
-    pass
+    list = [0] * (n + 1)
+    list[1] = 1
+    
+    if n == 0 or n == 1:
+        return [n]
+    for i in range(2, n + 1):
+        list[i] = list[i - 1] + list[i - 2]
+        
+    return list
